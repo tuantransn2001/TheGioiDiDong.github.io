@@ -1,0 +1,50 @@
+.shopping__trending__wrapper{
+    background: var( --background-linear-1--);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.shopping__trending__title{
+}
+.shopping__trending__list{
+    padding: 0 22px 30px;
+}
+.shopping__trending__item__wrapper{
+    display: block;
+    width: 100%;
+    height: 236px;
+    border-radius: 12px;
+    background-color: var(--white-origin--);
+    position: relative;
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+}
+.shopping__trending__item__wrapper.phone{
+    background-image: url('../../../assets/img/shoppingTrending/1.png'); 
+}
+.shopping__trending__item__wrapper.laptop{
+    background-image: url('../../../assets/img/shoppingTrending/2.png'); 
+}
+.shopping__trending__item__wrapper.head-phone{
+    background-image: url('../../../assets/img/shoppingTrending/3.png'); 
+}
+.shopping__trending__item__wrapper.watch{
+    background-image: url('../../../assets/img/shoppingTrending/4.png'); 
+}
+.shopping__trending__item__title{
+    position: absolute;
+    bottom: 58px;
+    left: 18px;
+    font-size: var(--fs-4--);
+    line-height: var(--lh-4-1--);
+    color: var(--black-2--);
+}
+.shopping__trending__item__link{
+    position: absolute;
+    bottom: 24px;
+    left: 18px;
+    font-size: var(--fs-5--);
+    line-height: var(--lh-5-1--);
+    color: var(--blue-1--);
+    font-weight: var(--medium--);
+}
