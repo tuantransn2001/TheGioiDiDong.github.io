@@ -7,11 +7,12 @@ const trunc = (string, limitNum) => {
   return string.length > limitNum ? string.slice(0, limitNum) + "..." : string;
 };
 
-const nextBtn = $(".slider__direction__btn.next");
-const prevBtn = $(".slider__direction__btn.prev");
-const slides = $(".slides");
-const slideWidth = $$(".slide__img__wrapper")[0].offsetWidth + 20;
-const carouselHandler = (nextBtn,prevBtn,slides,slideWidth) => {
+// ? === Banner Carousel ===
+const bannerNextBtn = $(".banner__slider__direction__btn.next");
+const bannerPrevBtn = $(".banner__slider__direction__btn.prev");
+const bannerSlides = $(".banner__slides");
+const bannerSlideWidth = $$(".banner__slide__img__wrapper")[0].offsetWidth + 20;
+const BannerCarouselHandler = (nextBtn,prevBtn,slides,slideWidth) => {
   let movePer = 0;
   let index = 0;
   const clickSlideHanlder = (direction) => {
@@ -408,6 +409,6 @@ const main = (() => {
   cateFeature.render();
   dailyBg.render();
   techNew.render();
-  carouselHandler(nextBtn,prevBtn,slides,slideWidth);
+  BannerCarouselHandler(bannerNextBtn,bannerPrevBtn,bannerSlides,bannerSlideWidth);
   accountHandler()
 })();
