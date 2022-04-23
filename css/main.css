@@ -11,14 +11,8 @@
 @import './components/slider/slider.module.css';
 @import './components/optionPromo/optionPromo.module.css';
 @import './components/hotDeal/hotDeal.module.css';
-@import './components/shoppingTrending/shoppingTrending.module.css';
-@import './components/cateFeature/cateFeature.module.css';
 @import './components/discountPayonl/discountPayonl.module.css';
-@import './components/serviceConv/serviceConv.module.css';
 @import './components/dailySg/dailySg.module.css';
-@import './components/techNew/techNew.module.css';
-@import './components/tradeMark/tradeMark.nodule.css';
-@import './components/newChain/newChain.module.css';
 @import './components/footer/footer.module.css';
 body{
     background: #f3f3f3; 

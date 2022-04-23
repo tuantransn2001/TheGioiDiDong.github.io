@@ -474,9 +474,7 @@ const accountHandler = {
   },
 };
 const main = (() => {
-  cateFeature.render();
   dailyBg.render();
-  techNew.render();
   carouselHandler(bannerNextBtn, bannerPrevBtn, bannerSlides, bannerSlideWidth);
   accountHandler.start();
 })();
