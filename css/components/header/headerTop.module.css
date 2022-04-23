@@ -158,8 +158,10 @@
     align-items: center;
     gap: 10px;
     padding: 0 12px;
+    cursor: pointer;
+    transition: all ease .25s;
 }
-.popUp__login__wrapper__modal__background{
+.login__wrapper__modal__background{
     content: '';
     position: fixed;
     top: 0;
@@ -169,46 +171,67 @@
     background-color: rgba(0,0,0,.6);
     display: none;
 }
-.popUp__login__wrapper{
-    width: 450px;
-    height: 375px;
+.login__wrapper{
+    width: 25vw;
+    height: 410px;
+    padding-bottom: 24px;
     border-radius: 12px;
     background-color: var(--white-origin--);
-    position: fixed;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 9999;
 }
-.popUp__login__heading{
+.login__heading{
     padding: 24px;
-    margin-bottom: 20px;
 }
-.popUp__login__title{
+.login__body{
+}
+.login__title{
     font-size: var(--fs-4--);
     color: var(--black-2--);
     font-weight: var(--medium--);
     text-align: center;
     position: relative;
 }
-.popUp__login__title.active{
+.login__title:hover,
+.login__title.active{
     color: var(--red-1--);
+    cursor: pointer;
 }
-.popUp__login__title.active::after{
+
+.login__title::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: var(--red-2--);
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transition: all ease .25s;
+}
+.login__title.active::after{
     content: '';
     width: 100%;
-    height: 1px;
+    height: 2px;
     background-color: var(--red-2--);
     position: absolute;
     top: calc(100% + 6px);
     left: 0;
+    transition: all ease .25s;
 }
-.popUp__login__content{
+.login__title:hover::after{
+    width: 100%;
+    left: 0;
+}
+.login__content{
     padding: 0 24px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-bottom: 20px;
+    height: 261px;
 }
 .login__field__wrapper{
     display: flex;
@@ -226,15 +249,15 @@
     border: 1px solid #ced4da;
 }
 
-.popUp__login__confirm__btns{
+.login__confirm__btns{
     padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.popUp__login__btn{
+.login__btn{
     align-self: center;
-    width: 190px;
+    width: 210px;
     height: 40px;
     padding: 8px 16px;
     border-radius: 4px;
@@ -243,11 +266,11 @@
     color: var(--black-2--);
     cursor: pointer;
 }
-.popUp__login__btn.confirm{
+.login__btn.confirm{
     background-color: var(--gray-2--);
     color: var(--white-origin--);
 }
-.popUp__login__btn.back{
+.login__btn.back{
     border: 1px solid var(--red-2--);
     color: var(--red-2--);
 }

@@ -12,7 +12,7 @@ const bannerNextBtn = $(".banner__slider__direction__btn.next");
 const bannerPrevBtn = $(".banner__slider__direction__btn.prev");
 const bannerSlides = $(".banner__slides");
 const bannerSlideWidth = $$(".banner__slide__img__wrapper")[0].offsetWidth + 20;
-const BannerCarouselHandler = (nextBtn,prevBtn,slides,slideWidth) => {
+const carouselHandler = (nextBtn, prevBtn, slides, slideWidth) => {
   let movePer = 0;
   let index = 0;
   const clickSlideHanlder = (direction) => {
@@ -161,7 +161,6 @@ const cateFeature = {
     cateFeatureList.innerHTML = htmls.join("");
   },
 };
-
 const dailyBg = {
   data: [
     {
@@ -352,7 +351,6 @@ const dailyBg = {
     dailyBgDeviceList.innerHTML = htmls.join("");
   },
 };
-
 const techNew = {
   blogData: [
     {
@@ -393,22 +391,92 @@ const techNew = {
     techNewBlogList.innerHTML = htmls.join("");
   },
 };
+const accountHandler = {
+  eventHanlder: () => {
+    const openBtn = $(".header__top__account__btn");
+    const closeBtn = $(".login__btn.back");
+    const signUpBg = $(".login__wrapper__modal__background");
+    // * Dòng này để bật login modal
+    openBtn.addEventListener("click", () => {
+      signUpBg.style = `display: block;`;
+    });
+    // * Dòng này để tắt login modal
+    closeBtn.addEventListener("click", () => {
+      signUpBg.style = `display: none;`;
+    });
+  },
 
-const accountHandler = () => {
-    const openBtn = $('.header__top__account__btn')
-    const closeBtn = $('.popUp__login__btn.back')
-    const signUpBg = $('.popUp__login__wrapper__modal__background')
-    openBtn.onclick = () => {
-        signUpBg.style = `display: block;`
-    }
-    closeBtn.onclick = () => {
-        signUpBg.style = `display: none;`
-    }
+  renderField: () => {
+    const data = {
+      signIn: [
+        {
+          field: "sdt",
+          type: "text",
+          placeholder: "Nhập số điện thoại hoặc email",
+          content: "Số điện thoại/Email",
+        },
+        {
+          field: "password",
+          type: "password",
+          placeholder: "Nhập mật khẩu",
+          content: "Mật khẩu",
+        },
+      ],
+      signUp: [
+        {
+          field: "sdt",
+          type: "text",
+          placeholder: "Số điện thoại",
+          content: "Số điện thoại",
+        },
+        {
+          field: "otp",
+          type: "text",
+          placeholder: "6 ký tự",
+          content: "Mã xác nhậc OTP",
+        },
+        {
+          field: "mk",
+          type: "password",
+          placeholder: "Nhập mật khẩu",
+          content: "Mật khẩu",
+        },
+      ],
+    };
+    const switchBtns = $$(".login__title"); 
+    const loginContent = $(".login__content");
+    const confirmBtn = $(".login__btn.confirm");
+    let dataKey = "";
+    switchBtns.forEach((btn, index) => { // * Lặp qua 2 nút đăng nhập và đăng kí để bắt sự kiên user click => người dùng click zo đăng nhập thì chuyển sang các input field đăng nhập và đăng kí thì chuyển sang input field đăng kí
+      btn.addEventListener("click", (e) => {
+        // * Khi người dùng click vào 1 trong 2 nút đăng nhập đăng hoặc đăng kí thì bước 1 là xóa cái class active mặc định ban đầu
+        // * class active để => style chữ đỏ và có gạch chân màu đỏ
+        $(".login__title.active").classList.remove("active");
+        // * bước 2 là thêm class active vào nút người dùng vừa click
+        btn.classList.add("active");
+        // * biến dataKey để render đăng nhập hay đăng kí tùy vào user click => Khi user click vào nút sẽ lấy attribute key [file html dòng 833 và 836] => lấy key bên thẻ h1 gán cho biến dataKey
+        dataKey = e.target.getAttribute("key"); 
+        let fieldHtmls = data[dataKey].map((field, index) => {
+          return `
+          <div class="login__field__wrapper">
+            <label for=${field.field} class="login__field__label">Số điện thoại/login</label>
+            <input type="text" id=${field.field} class="login__field__input" placeholder="Nhập số điện thoại hoặc email" >
+          </div>`;
+        });
+        loginContent.innerHTML = fieldHtmls.join("");
+        confirmBtn.innerHTML = dataKey === 'signIn' ? 'Đăng nhập' : 'Đăng kí'       
+      });
+    });
+  },
+  start() {
+    this.eventHanlder();
+    this.renderField();
+  },
 };
 const main = (() => {
   cateFeature.render();
   dailyBg.render();
   techNew.render();
-  BannerCarouselHandler(bannerNextBtn,bannerPrevBtn,bannerSlides,bannerSlideWidth);
-  accountHandler()
+  carouselHandler(bannerNextBtn, bannerPrevBtn, bannerSlides, bannerSlideWidth);
+  accountHandler.start();
 })();
