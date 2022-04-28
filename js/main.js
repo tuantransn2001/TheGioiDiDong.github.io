@@ -412,13 +412,13 @@ const accountHandler = {
         {
           field: "sdt",
           type: "text",
-          placeholder: "Nhập số điện thoại hoặc email",
+          placeholderName: "Nhập số điện thoại hoặc email",
           content: "Số điện thoại/Email",
         },
         {
           field: "password",
           type: "password",
-          placeholder: "Nhập mật khẩu",
+          placeholderName: "Nhập mật khẩu",
           content: "Mật khẩu",
         },
       ],
@@ -426,19 +426,19 @@ const accountHandler = {
         {
           field: "sdt",
           type: "text",
-          placeholder: "Số điện thoại",
+          placeholderName: "Nhập số điện thoại",
           content: "Số điện thoại",
         },
         {
           field: "otp",
           type: "text",
-          placeholder: "6 ký tự",
+          placeholderName: "6 ký tự",
           content: "Mã xác nhậc OTP",
         },
         {
           field: "mk",
           type: "password",
-          placeholder: "Nhập mật khẩu",
+          placeholderName: "Nhập mật khẩu",
           content: "Mật khẩu",
         },
       ],
@@ -457,13 +457,14 @@ const accountHandler = {
         // * biến dataKey để render đăng nhập hay đăng kí tùy vào user click => Khi user click vào nút sẽ lấy attribute key [file html dòng 833 và 836] => lấy key bên thẻ h1 gán cho biến dataKey
         dataKey = e.target.getAttribute("key"); 
         let fieldHtmls = data[dataKey].map((field, index) => {
-          return `
-          <div class="login__field__wrapper">
-            <label for=${field.field} class="login__field__label">Số điện thoại/login</label>
-            <input type="text" id=${field.field} class="login__field__input" placeholder="Nhập số điện thoại hoặc email" >
-          </div>`;
+          console.log(field)
+          return `<div class="login__field__wrapper" key=${index} >
+                      <label for=${field.field} class="login__field__label">${field.content}</label>
+                      <input type=${field.type} class="login__field__input"
+                          placeholder=${field.placeholderName}>
+                  </div>`;
         });
-        loginContent.innerHTML = fieldHtmls.join("");
+        loginContent.innerHTML = fieldHtmls.join('')
         confirmBtn.innerHTML = dataKey === 'signIn' ? 'Đăng nhập' : 'Đăng kí'       
       });
     });
