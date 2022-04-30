@@ -14,6 +14,7 @@
 @import './components/discountPayonl/discountPayonl.module.css';
 @import './components/dailySg/dailySg.module.css';
 @import './components/footer/footer.module.css';
+@import './components/pagination/pagination.module.css';
 body{
     background: #f3f3f3; 
 }

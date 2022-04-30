@@ -144,10 +144,26 @@ body{
 }
 .shopping__cart__footer{
     margin-top: 15px;
-    padding: 20px 0;
+    padding: 15px;
     display: flex;
+    gap: 20px;
     justify-content: flex-end;
-    padding-right: 100px;
     border-radius: 12px;
     background-color: var(--white-origin--);   
+}
+.shopping__cart__footer__content{
+    display: flex;
+    align-items: center;
+}
+.shopping__cart__footer__btn{
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    background-color: #c00;
+    color: var(--white-origin--);
+    font-size: var(--fs-6--);
+    font-weight: var(--semi-bold--);
+    cursor: pointer;
 }
