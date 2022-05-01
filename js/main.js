@@ -392,6 +392,17 @@ const techNew = {
   },
 };
 const accountHandler = {
+  userData: {},
+  // getUserValue (){
+  //   const inputs = $$(".login__field__input");
+  //   inputs.forEach((input, index) => {
+  //     input.addEventListener("change", (e) => {
+  //       this.userData[e.target.attributes.data.value] = e.target.value
+  //       console.log(this.userData)
+  //     });
+  //   });
+
+  // },
   eventHanlder: () => {
     const openBtn = $(".header__top__account__btn");
     const closeBtn = $(".login__btn.back");
@@ -405,49 +416,76 @@ const accountHandler = {
       signUpBg.style = `display: none;`;
     });
   },
-
-  renderField: () => {
+  renderField() {
     const data = {
       signIn: [
         {
-          field: "sdt",
+          field: "taiKhoan",
           type: "text",
-          placeholderName: "Nhập số điện thoại hoặc email",
-          content: "Số điện thoại/Email",
+          content: "Nhập tài khoản",
         },
         {
-          field: "password",
+          field: "matKhau",
           type: "password",
-          placeholderName: "Nhập mật khẩu",
-          content: "Mật khẩu",
+          content: "Nhập mật khẩu",
         },
       ],
       signUp: [
         {
-          field: "sdt",
+          field: "hoTen",
           type: "text",
-          placeholderName: "Nhập số điện thoại",
-          content: "Số điện thoại",
+          content: "Họ và tên",
         },
         {
-          field: "otp",
+          field: "taiKhoan",
           type: "text",
-          placeholderName: "6 ký tự",
-          content: "Mã xác nhậc OTP",
+          content: "Tài khoản",
         },
         {
-          field: "mk",
-          type: "password",
-          placeholderName: "Nhập mật khẩu",
-          content: "Mật khẩu",
+          field: "email",
+          type: "text",
+          content: "Email",
+        },
+        {
+          field: "diaChi",
+          type: "text",
+          content: "Địa chỉ",
+        },
+        {
+          field: "dienThoai",
+          type: "text",
+          content: "Điện thoại",
+        },
+        {
+          field: "gioiTinh",
+          type: "text",
+          content: "Giới tính",
+        },
+        {
+          field: "ngaySinh",
+          type: "text",
+          content: "Ngày sinh",
         },
       ],
     };
-    const switchBtns = $$(".login__title"); 
+    const switchBtns = $$(".login__title");
     const loginContent = $(".login__content");
     const confirmBtn = $(".login__btn.confirm");
     let dataKey = "";
-    switchBtns.forEach((btn, index) => { // * Lặp qua 2 nút đăng nhập và đăng kí để bắt sự kiên user click => người dùng click zo đăng nhập thì chuyển sang các input field đăng nhập và đăng kí thì chuyển sang input field đăng kí
+    switchBtns.forEach((btn, index) => {
+      if (index === 0) {
+        dataKey = "signIn";
+        let fieldHtmls = data[dataKey].map((field, index) => {
+          return `<div class="login__field__wrapper" key=${index} >
+                      <label for=${field.field} class="login__field__label">${field.content}</label>
+                      <input data=${field.field} type=${field.type} class="login__field__input"
+                      >
+                  </div>`;
+        });
+        loginContent.innerHTML = fieldHtmls.join("");
+        confirmBtn.innerHTML = dataKey === "signIn" ? "Đăng nhập" : "Đăng kí";
+      }
+      // * Lặp qua 2 nút đăng nhập và đăng kí để bắt sự kiên user click => người dùng click zo đăng nhập thì chuyển sang các input field đăng nhập và đăng kí thì chuyển sang input field đăng kí
       btn.addEventListener("click", (e) => {
         // * Khi người dùng click vào 1 trong 2 nút đăng nhập đăng hoặc đăng kí thì bước 1 là xóa cái class active mặc định ban đầu
         // * class active để => style chữ đỏ và có gạch chân màu đỏ
@@ -455,17 +493,16 @@ const accountHandler = {
         // * bước 2 là thêm class active vào nút người dùng vừa click
         btn.classList.add("active");
         // * biến dataKey để render đăng nhập hay đăng kí tùy vào user click => Khi user click vào nút sẽ lấy attribute key [file html dòng 833 và 836] => lấy key bên thẻ h1 gán cho biến dataKey
-        dataKey = e.target.getAttribute("key"); 
+        dataKey = e.target.getAttribute("key");
         let fieldHtmls = data[dataKey].map((field, index) => {
-          console.log(field)
           return `<div class="login__field__wrapper" key=${index} >
                       <label for=${field.field} class="login__field__label">${field.content}</label>
                       <input type=${field.type} class="login__field__input"
-                          placeholder=${field.placeholderName}>
+                      >
                   </div>`;
         });
-        loginContent.innerHTML = fieldHtmls.join('')
-        confirmBtn.innerHTML = dataKey === 'signIn' ? 'Đăng nhập' : 'Đăng kí'       
+        loginContent.innerHTML = fieldHtmls.join("");
+        confirmBtn.innerHTML = dataKey === "signIn" ? "Đăng nhập" : "Đăng kí";
       });
     });
   },

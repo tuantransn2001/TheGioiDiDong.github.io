@@ -226,6 +226,8 @@
     left: 0;
 }
 .login__content{
+    height: 261px;
+    overflow-y: scroll;
     padding: 0 24px;
     display: flex;
     flex-direction: column;
