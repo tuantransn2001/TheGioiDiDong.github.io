@@ -8,6 +8,31 @@
 .option-sg__list{
 
 }
+.box-related-tag{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+    padding: 0 10px;
+    overflow-x: scroll;
+}
+.box-related-tag::-webkit-scrollbar{
+    display: none;
+}
+.box-related-tag li {
+    padding: 8px 16px;
+    border: 1px solid #444444;
+    border-radius: 12px;
+    background: #F3F4F6;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    width: max-content;
+}
+.box-related-tag li a{
+    color: #444444;
+    
+}
 .options-sg{
     padding-bottom: 10px;
 }
